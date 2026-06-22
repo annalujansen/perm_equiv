@@ -51,7 +51,41 @@ Definition equiv l l' := forall n:nat, num_oc n l = num_oc n l'.
 
 
 Lemma perm_to_equiv: forall l l', Permutation l l' -> equiv l l'.
-Proof. Admitted.
+Proof.
+  intros l l' H. induction H.
+  - unfold equiv. reflexivity.
+  - unfold equiv in *. intro n. simpl. destruct (n =? x).
+    + rewrite IHPermutation. reflexivity.
+    + apply IHPermutation.
+  - unfold equiv in *. intro n; simpl. destruct (n =? x).
+    + destruct (n =? y); reflexivity.
+    + destruct (n =? y); reflexivity.
+  - unfold equiv in *. intro n. rewrite IHPermutation1. rewrite IHPermutation2. reflexivity.
+Qed.
+
+
+Lemma equiv_nil: forall l, equiv nil l -> l = nil.
+Proof.                                                
+  induction l.
+  - intro H. reflexivity.
+  - intro H. unfold equiv in H. specialize (H a). simpl in H. rewrite Nat.eqb_refl in H. inversion H.
+Qed.
+
+Lemma equiv_skip: forall l l' a, equiv (a :: l) (a :: l') -> equiv l l'.
+Proof.
+  intros l l' a H. assert (H' := H). unfold equiv in *. intro n. specialize (H n). simpl in H. destruct (n =? a).
+  - inversion H. reflexivity.
+  - assumption.
+Qed.
+
+Lemma equiv_perm: forall l l' a a', equiv (a::l) (a'::l') ->  (a' =? a) = false -> exists l'', equiv (a::l) (a::l'').
+Proof.
+  induction l.
+  - intros l' a a' H1 H2. unfold equiv in H1. specialize (H1 a'). simpl in H1. rewrite H2 in H1. rewrite Nat.eqb_refl in H1. inversion H1.
+  - intros l' a' a'' H1 H2. exists (a :: l). unfold equiv. intro n. reflexivity.
+Qed.
+
+
 
 
 Lemma equiv_to_perm: forall l l', equiv l l' -> Permutation l l'.
