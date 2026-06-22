@@ -109,6 +109,15 @@ Proof.
   - rewrite Nat.eqb_refl in H. symmetry in H. apply num_occ_cons in H as [l1 [l2 [H2 H3]]]. exists l1, l2. assumption.
 Qed.
 
+Lemma num_oc_app: forall n l1 l2, num_oc n (l1 ++ l2) = num_oc n l1 + num_oc n l2.
+Proof.
+  intros n l1 l2. induction l1 as [| x l1 IHl1].
+  - reflexivity.
+  - simpl. destruct (n =? x).
+    + rewrite IHl1. reflexivity.
+    + apply IHl1.
+Qed.
+
 Lemma equiv_to_perm: forall l l', equiv l l' -> Permutation l l'.
 Proof. Admitted.
 
