@@ -139,6 +139,12 @@ O teorema a seguir formaliza que as definições [Permutation] e [equiv] são eq
 *)
 
 Theorem perm_equiv: forall l l', Permutation l l' <-> equiv l l'.
-Proof. Admitted.
+Proof.
+  intros l l'.
+  split.
+  - apply perm_to_equiv.
+  - apply equiv_to_perm.
+Qed.
+
 
 (** Repositório: %\url{https://github.com/flaviodemoura/perm_equiv}% *)
