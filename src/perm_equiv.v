@@ -118,6 +118,11 @@ Proof.
     + apply IHl1.
 Qed.
 
+Lemma equiv_app: forall l l1 l2, equiv l (l1 ++ l2) -> equiv l (l2 ++ l1).
+Proof.
+  intros l l1 l2 H. unfold equiv in *. intros n. specialize (H n). rewrite H. rewrite num_oc_app. rewrite num_oc_app. apply Nat.add_comm.
+Qed.
+
 Lemma equiv_to_perm: forall l l', equiv l l' -> Permutation l l'.
 Proof. Admitted.
 
