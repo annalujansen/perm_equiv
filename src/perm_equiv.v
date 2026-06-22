@@ -85,6 +85,20 @@ Proof.
   - intros l' a' a'' H1 H2. exists (a :: l). unfold equiv. intro n. reflexivity.
 Qed.
 
+Lemma num_occ_cons: forall l x n, num_oc x l = S n -> exists l1 l2, l = l1 ++ x :: l2 /\ num_oc x (l1 ++ l2) = n.
+Proof.
+  induction l.
+  - intros x n H. simpl in H. inversion H.
+  - intros x n H. simpl in H. destruct (x=?a) eqn: H1.
+    + specialize (IHl x n). apply Nat.eqb_eq in H1. rewrite H1. exists nil. exists l. simpl. split.
+      * reflexivity.
+      * apply eq_add_S in H. replace x in H. apply H.              
+    + apply IHl in H. destruct H. destruct H. destruct H. rewrite H. exists (a::x0). exists x1. split.
+      * reflexivity.
+      * simpl. destruct (x=?a).
+        ** rewrite H0. inversion H1.
+        ** apply H0.
+Qed.
 
 
 
