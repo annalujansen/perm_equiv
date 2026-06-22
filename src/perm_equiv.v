@@ -124,7 +124,15 @@ Proof.
 Qed.
 
 Lemma equiv_to_perm: forall l l', equiv l l' -> Permutation l l'.
-Proof. Admitted.
+Proof.
+  induction l as [| a l IHl].
+  - intros l' H. apply equiv_nil in H. subst. constructor.
+  - intros l' H. destruct l' as [| a' l'].
+    + unfold equiv in H. specialize (H a). simpl in H. rewrite Nat.eqb_refl in H. inversion H.
+    + case (Nat.eq_dec a a').
+      * intros Heq. subst. apply equiv_skip in H. apply perm_skip. apply IHl. assumption.
+      * intros Hneq. assert (H' := H). apply equiv_exists in H. destruct H as [l'' [l''' H]]. rewrite H in *. apply Permutation_cons_app. apply IHl. apply equiv_app in H'. simpl in H'. apply equiv_skip in H'. apply equiv_app. assumption.
+Qed.
 
 (**
 
