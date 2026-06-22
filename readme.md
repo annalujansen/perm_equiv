@@ -1,4 +1,4 @@
-# Correção do Algoritmo de Ordenação por Inserção Binária
+# Correção do Algoritmo de Equivalência entre diferentes noções de permutação
 
 Projeto desenvolvido para a disciplina **Projeto e Análise de Algoritmos (2026/1)** — Universidade de Brasília.
 
@@ -11,4 +11,4 @@ Projeto desenvolvido para a disciplina **Projeto e Análise de Algoritmos (2026/
 
 ## Descrição
 
-Este projeto contém a formalização da correção do algoritmo de ordenação por inserção binária, conforme a proposta 4 do enunciado do projeto.
+Este projeto contém a formalização da correção do algoritmo de Equivalência entre diferentes noções de permutação, conforme a proposta 7 do enunciado do projeto.
