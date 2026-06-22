@@ -102,6 +102,13 @@ Qed.
 
 
 
+Lemma equiv_exists: forall l l' x, equiv (x::l) l' -> exists l'' l''', l' = l'' ++ (x::l''').
+Proof.
+  intros l l' x H. unfold equiv in H. specialize (H x). simpl in H. destruct (num_oc x (x :: l)) eqn:H1.
+  - simpl in H1. rewrite Nat.eqb_refl in H1. inversion H1.
+  - rewrite Nat.eqb_refl in H. symmetry in H. apply num_occ_cons in H as [l1 [l2 [H2 H3]]]. exists l1, l2. assumption.
+Qed.
+
 Lemma equiv_to_perm: forall l l', equiv l l' -> Permutation l l'.
 Proof. Admitted.
 
