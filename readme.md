@@ -12,3 +12,7 @@ Projeto desenvolvido para a disciplina **Projeto e Análise de Algoritmos (2026/
 ## Descrição
 
 Este projeto contém a formalização da correção do algoritmo de Equivalência entre diferentes noções de permutação, conforme a proposta 7 do enunciado do projeto.
+
+## Vídeo da apresentação
+
+Link: https://unbbr-my.sharepoint.com/:v:/g/personal/232024572_aluno_unb_br/IQB0Hm7q3d1zRZiURRkPjmpmAZIj4nW5nsPHFVLdWtBIC44?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=UEI23q
